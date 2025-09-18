@@ -60,4 +60,6 @@ def _toolchain_extension(module_ctx):
 buildx = module_extension(
     implementation = _toolchain_extension,
     tag_classes = {"toolchains": buildx_toolchain},
+    arch_dependent = True,
+    os_dependent = True,
 )
