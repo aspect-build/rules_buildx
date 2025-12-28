@@ -61,14 +61,10 @@ def _context_oci_layout(replace, layout):
         "srcs": [name],
     }
 
-def _context_sources(replace, sources, override_path = None):
-    store = "$(location %s)" % sources
-    if override_path:
-        store = override_path
-
+def _context_sources(replace, sources, override_path):
     return {
         "replace": replace,
-        "store": store,
+        "store": override_path,
         "srcs": sources,
     }
 
