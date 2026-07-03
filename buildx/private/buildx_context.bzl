@@ -12,7 +12,22 @@ def _copy_sources_to_context_impl(ctx):
     output = ctx.actions.declare_directory(ctx.label.name)
     args = ctx.actions.args()
     args.add(output.path)
-    args.add_all(ctx.files.srcs)
+
+    package_prefix = ctx.label.package + "/" if ctx.label.package else ""
+
+    for src in ctx.files.srcs:
+        short_path = src.short_path
+
+        # Keep paths relative to this package when possible.
+        if package_prefix and short_path.startswith(package_prefix):
+            rel_path = short_path[len(package_prefix):]
+        else:
+            # Keep external/other-package files workspace-relative.
+            rel_path = short_path
+
+        args.add(src.path)
+        args.add(rel_path)
+
     ctx.actions.run_shell(
         inputs = ctx.files.srcs,
         outputs = [output],
@@ -26,11 +41,16 @@ shift
 rm -rf "$output"
 mkdir -p "$output"
 
-for src in "$@"; do
+while [ "$#" -gt 0 ]; do
+    src="$1"
+    rel="$2"
+    shift 2
+
     if [ -d "$src" ]; then
         cp -R "$src/." "$output"
     else
-        cp "$src" "$output/$(basename "$src")"
+        mkdir -p "$output/$(dirname "$rel")"
+        cp "$src" "$output/$rel"
     fi
 done
 """,
