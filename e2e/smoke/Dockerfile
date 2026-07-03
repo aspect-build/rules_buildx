@@ -15,7 +15,7 @@ RUN pip install cowsay
 
 COPY --from=root . /app
 
-COPY --from=bins_hi hi /usr/local/bin/hi
+COPY --from=bins_hi bins/hi /usr/local/bin/hi
 
 ENTRYPOINT ["/usr/local/bin/python3"]
 
