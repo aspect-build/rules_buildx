@@ -10,7 +10,6 @@ names (the latest version will be picked for each name) and can register them as
 effectively overriding the default named toolchain due to toolchain resolution precedence.
 """
 
-load("@aspect_bazel_lib//lib:repo_utils.bzl", "repo_utils")
 load("@aspect_tools_telemetry_report//:defs.bzl", "TELEMETRY")  # buildifier: disable=load
 load(":repositories.bzl", "buildx_register_toolchains")
 
@@ -50,7 +49,6 @@ def _toolchain_extension(module_ctx):
             name = name,
             buildx_version = selected,
             register = False,
-            host_platform = repo_utils.platform(module_ctx),
         )
 
     return module_ctx.extension_metadata(
@@ -61,6 +59,4 @@ def _toolchain_extension(module_ctx):
 buildx = module_extension(
     implementation = _toolchain_extension,
     tag_classes = {"toolchains": buildx_toolchain},
-    arch_dependent = True,
-    os_dependent = True,
 )

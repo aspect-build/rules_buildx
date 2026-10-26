@@ -245,11 +245,10 @@
   "selectedYankedVersions": {},
   "moduleExtensions": {
     "@@aspect_rules_buildx+//buildx:extensions.bzl%buildx": {
-      "os:osx,arch:aarch64": {
-        "bzlTransitiveDigest": "szh1XGtsLAa120yY/TL67tahygTLpq9F4bUdYZg/hhs=",
+      "general": {
+        "bzlTransitiveDigest": "DTUtxGXrYMdnqEFyQ+4w3rOpWqthVSHhHiv6cwTr1kY=",
         "usagesDigest": "ZpR2jcmQDJm6iLdWYU3OA5wygPSnNlKJ7JYbD/rhkuc=",
         "recordedInputs": [
-          "REPO_MAPPING:aspect_rules_buildx+,aspect_bazel_lib aspect_bazel_lib+",
           "REPO_MAPPING:aspect_rules_buildx+,aspect_tools_telemetry_report aspect_tools_telemetry++telemetry+aspect_tools_telemetry_report"
         ],
         "generatedRepoSpecs": {
@@ -297,9 +296,7 @@
           },
           "buildx_configuration": {
             "repoRuleId": "@@aspect_rules_buildx+//buildx:repositories.bzl%configure_buildx",
-            "attributes": {
-              "buildx": "@@aspect_rules_buildx++buildx+buildx_darwin-arm64//:buildx"
-            }
+            "attributes": {}
           },
           "buildx_toolchains": {
             "repoRuleId": "@@aspect_rules_buildx+//buildx/private:toolchains_repo.bzl%toolchains_repo",

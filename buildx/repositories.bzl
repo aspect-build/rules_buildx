@@ -54,13 +54,10 @@ TARGET_COMPATIBLE_WITH = []
 configure_buildx = repository_rule(
     implementation = _impl_configure_buildx,
     local = True,
-    attrs = {
-        "buildx": attr.label(),
-    },
 )
 
 # Wrapper macro around everything above, this is the primary API
-def buildx_register_toolchains(name = "buildx", buildx_version = "0.28.0", register = True, host_platform = None, **kwargs):
+def buildx_register_toolchains(name = "buildx", buildx_version = "0.28.0", register = True, **kwargs):
     """Convenience macro for users which does typical setup.
 
     - create a repository for each built-in platform like "buildx_linux_amd64"
@@ -73,7 +70,6 @@ def buildx_register_toolchains(name = "buildx", buildx_version = "0.28.0", regis
         register: whether to call through to native.register_toolchains.
             Should be True for WORKSPACE users, but false when used under bzlmod extension
         buildx_version: buildx version to use
-        host_platform: internal.
         **kwargs: passed to each buildx_repositories call
     """
     for platform in PLATFORMS.keys():
@@ -88,7 +84,6 @@ def buildx_register_toolchains(name = "buildx", buildx_version = "0.28.0", regis
 
     configure_buildx(
         name = name + "_configuration",
-        buildx = "@buildx_%s//:buildx" % host_platform.replace("_", "-") if host_platform else None,
     )
 
     toolchains_repo(
