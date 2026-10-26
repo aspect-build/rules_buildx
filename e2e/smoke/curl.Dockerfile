@@ -1,4 +1,4 @@
-FROM python:3.11.9-bullseye
+FROM python:3.11.17-bookworm
 
 ARG DEBIAN_FRONTEND=noninteractive
 
