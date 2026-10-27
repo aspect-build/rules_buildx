@@ -192,8 +192,8 @@
   "selectedYankedVersions": {},
   "moduleExtensions": {
     "@@aspect_rules_buildx~//buildx:extensions.bzl%buildx": {
-      "os:osx,arch:aarch64": {
-        "bzlTransitiveDigest": "szh1XGtsLAa120yY/TL67tahygTLpq9F4bUdYZg/hhs=",
+      "general": {
+        "bzlTransitiveDigest": "DTUtxGXrYMdnqEFyQ+4w3rOpWqthVSHhHiv6cwTr1kY=",
         "usagesDigest": "YzO+O3JCsza05TdYFamiD3hPWuve/vFWHM/2HG1di1s=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
@@ -250,9 +250,7 @@
           "buildx_configuration": {
             "bzlFile": "@@aspect_rules_buildx~//buildx:repositories.bzl",
             "ruleClassName": "configure_buildx",
-            "attributes": {
-              "buildx": "@@aspect_rules_buildx~~buildx~buildx_darwin-arm64//:buildx"
-            }
+            "attributes": {}
           },
           "buildx_toolchains": {
             "bzlFile": "@@aspect_rules_buildx~//buildx/private:toolchains_repo.bzl",
@@ -272,11 +270,6 @@
           "reproducible": false
         },
         "recordedRepoMappingEntries": [
-          [
-            "aspect_rules_buildx~",
-            "aspect_bazel_lib",
-            "aspect_bazel_lib~"
-          ],
           [
             "aspect_rules_buildx~",
             "aspect_tools_telemetry_report",

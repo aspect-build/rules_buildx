@@ -4,7 +4,7 @@ load("@rules_oci//oci:defs.bzl", "oci_image", "oci_load")
 
 buildx_context_oci_layout(
     name = "python_context",
-    layout = "@python_3_11_9-bullseye_linux_amd64",
+    layout = "@python_3_11_17-bookworm_linux_amd64",
 )
 
 buildx_context_local(
@@ -25,8 +25,8 @@ buildx_context_local(
 buildx_build(
     name = "base_image",
     build_context = {
-        # replaces FROM python:3.11.9-bullseye with @ubuntu from oci_pull
-        "python:3.11.9-bullseye": ":python_context",
+        # replaces FROM python:3.11.17-bookworm with the layout from oci_pull
+        "python:3.11.17-bookworm": ":python_context",
         # make lib1 available as COPY --from=lib1 in the dockerfile
         "lib1": ":lib1_context",
         "bins_hi": ":bins_hi_context",
