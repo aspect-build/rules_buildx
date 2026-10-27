@@ -18,9 +18,11 @@ jobs:
           ".",
           "e2e/smoke"
         ]
+      # GitHub macOS runners have no Docker daemon, which the e2e/smoke tests require
       exclude: |
         [
-          {"bzlmodEnabled": false}
+          {"bzlmodEnabled": false},
+          {"os": "macos-latest", "folder": "e2e/smoke"}
         ]
   pre-commit:
     runs-on: ubuntu-latest
