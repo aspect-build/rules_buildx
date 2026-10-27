@@ -25,7 +25,7 @@ jobs:
     with:
       tag_name: ${{ inputs.tag_name }}
       # GitHub repository which is a fork of the upstream where the Pull Request will be opened.
-      registry_fork: thesayyn/bazel-central-registry
+      registry_fork: aspect-forks/bazel-central-registry
     permissions:
       attestations: write
       contents: write
