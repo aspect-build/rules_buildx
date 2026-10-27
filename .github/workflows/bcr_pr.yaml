@@ -1,0 +1,25 @@
+# Acts on BCR pull requests opened by publish.yaml, as their author (the publish token's account).
+name: BCR pull request
+on:
+  workflow_dispatch:
+    inputs:
+      pr:
+        description: Pull request number in bazelbuild/bazel-central-registry
+        required: true
+        type: number
+      action:
+        required: true
+        type: choice
+        options:
+          - close
+          - ready
+permissions: {}
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          GH_TOKEN: ${{ secrets.BCR_PUBLISH_TOKEN }}
+          PR: ${{ inputs.pr }}
+          ACTION: ${{ inputs.action }}
+        run: gh pr "${ACTION}" "${PR}" --repo bazelbuild/bazel-central-registry
