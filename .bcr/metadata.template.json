@@ -15,6 +15,12 @@
       "email": "reid@aspect.build",
       "github": "arrdem",
       "name": "Reid D McKenzie"
+    },
+    {
+      "email": "xangcastle@gmail.com",
+      "github": "xangcastle",
+      "github_user_id": 13787208,
+      "name": "Cesar Abel"
     }
   ],
   "repository": ["github:aspect-build/rules_buildx"],
