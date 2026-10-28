@@ -22,6 +22,18 @@ buildx_context_local(
     srcs = glob(["src/*"]),
 )
 
+buildx_context_local(
+    name = "external_context",
+    srcs = ["@bazel_skylib//:LICENSE"],
+)
+
+genrule(
+    name = "external_context_test",
+    srcs = [":external_context"],
+    outs = ["external_context_test.txt"],
+    cmd = "test -f $(execpath :external_context)/LICENSE && touch $@",
+)
+
 buildx_build(
     name = "base_image",
     build_context = {
@@ -133,5 +145,6 @@ build_test(
         ":curl_buildx_linux_arm64",
         ":motd",
         ":version",
+        ":external_context_test",
     ],
 )

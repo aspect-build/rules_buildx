@@ -8,22 +8,32 @@ BuildXContextInfo = provider(
     },
 )
 
+def _repo_relative_path(file):
+    # External files have short paths of the form `../<repo>/<path>`.
+    if file.short_path.startswith("../"):
+        return file.short_path.split("/", 2)[2]
+    return file.short_path
+
 def _copy_sources_to_context_impl(ctx):
     output = ctx.actions.declare_directory(ctx.label.name)
     args = ctx.actions.args()
     args.add(output.path)
 
     package_prefix = ctx.label.package + "/" if ctx.label.package else ""
+    staged = {}
 
     for src in ctx.files.srcs:
-        short_path = src.short_path
+        rel_path = _repo_relative_path(src)
 
-        # Keep paths relative to this package when possible.
-        if package_prefix and short_path.startswith(package_prefix):
-            rel_path = short_path[len(package_prefix):]
-        else:
-            # Keep external/other-package files workspace-relative.
-            rel_path = short_path
+        # Keep paths relative to this package when possible, otherwise repository-relative.
+        if (package_prefix and src.owner.workspace_name == ctx.label.workspace_name and
+            rel_path.startswith(package_prefix)):
+            rel_path = rel_path[len(package_prefix):]
+
+        if not src.is_directory:
+            if staged.get(rel_path, src) != src:
+                fail("{} and {} both map to `{}` in the context".format(staged[rel_path].owner, src.owner, rel_path))
+            staged[rel_path] = src
 
         args.add(src.path)
         args.add(rel_path)
@@ -70,7 +80,11 @@ buildx_context_local = rule(
     attrs = {
         "srcs": attr.label_list(
             allow_files = True,
-            doc = "Sources to stage into this reusable BuildX context.",
+            doc = """Sources to stage into this reusable BuildX context.
+
+            Files in this package are staged relative to the package; any other file, including
+            files from external repositories, relative to the root of its repository. Two files
+            mapping to the same path is an error.""",
         ),
     },
     doc = "Creates a reusable BuildX build context from a list of sources.",
