@@ -53,7 +53,7 @@ Creates a reusable BuildX build context from a list of sources.
 | Name  | Description | Type | Mandatory | Default |
 | :------------- | :------------- | :------------- | :------------- | :------------- |
 | <a id="buildx_context_local-name"></a>name |  A unique name for this target.   | <a href="https://bazel.build/concepts/labels#target-names">Name</a> | required |  |
-| <a id="buildx_context_local-srcs"></a>srcs |  Sources to stage into this reusable BuildX context.   | <a href="https://bazel.build/concepts/labels">List of labels</a> | optional |  `[]`  |
+| <a id="buildx_context_local-srcs"></a>srcs |  Sources to stage into this reusable BuildX context.<br><br>Files in this package are staged relative to the package; any other file, including files from external repositories, relative to the root of its repository. Two files mapping to the same path is an error.   | <a href="https://bazel.build/concepts/labels">List of labels</a> | optional |  `[]`  |
 
 
 <a id="buildx_context_oci_layout"></a>
