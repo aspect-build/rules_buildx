@@ -10,7 +10,6 @@ names (the latest version will be picked for each name) and can register them as
 effectively overriding the default named toolchain due to toolchain resolution precedence.
 """
 
-load("@aspect_tools_telemetry_report//:defs.bzl", "TELEMETRY")  # buildifier: disable=load
 load(":repositories.bzl", "buildx_register_toolchains")
 
 _DEFAULT_NAME = "buildx"
