@@ -1,5 +1,8 @@
 # Bazel rules for BuildX
 
+> [!IMPORTANT]
+> This module was previously published as `aspect_rules_buildx`. To upgrade, replace `aspect_rules_buildx` with `rules_buildx` in your `bazel_dep`, `load()` statements and flags.
+
 Bazel rules for [buildx](https://github.com/docker/buildx) so you can use your existing Dockerfiles with Bazel.
 
 ## Why would you want this?
