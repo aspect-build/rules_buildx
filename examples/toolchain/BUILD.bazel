@@ -33,5 +33,5 @@ fi
   - < "$(location :context)"
 """,
     local = True,
-    toolchains = ["@aspect_rules_buildx//buildx:resolved_toolchain"],
+    toolchains = ["@rules_buildx//buildx:resolved_toolchain"],
 )

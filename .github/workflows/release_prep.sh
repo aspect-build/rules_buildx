@@ -20,6 +20,6 @@ cat << EOF
 Add to your \`MODULE.bazel\` file:
 
 \`\`\`starlark
-bazel_dep(name = "aspect_rules_buildx", version = "${TAG:1}")
+bazel_dep(name = "rules_buildx", version = "${TAG:1}")
 \`\`\`
 EOF

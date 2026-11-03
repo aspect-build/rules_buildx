@@ -7,7 +7,7 @@ Public API re-exports
 ## buildx_build
 
 <pre>
-load("@aspect_rules_buildx//buildx:defs.bzl", "buildx_build")
+load("@rules_buildx//buildx:defs.bzl", "buildx_build")
 
 buildx_build(<a href="#buildx_build-name">name</a>, <a href="#buildx_build-srcs">srcs</a>, <a href="#buildx_build-outs">outs</a>, <a href="#buildx_build-build_context">build_context</a>, <a href="#buildx_build-builder_name">builder_name</a>, <a href="#buildx_build-builder_name_prefix">builder_name_prefix</a>, <a href="#buildx_build-buildx_flags">buildx_flags</a>,
              <a href="#buildx_build-dockerfile">dockerfile</a>, <a href="#buildx_build-execution_requirements">execution_requirements</a>, <a href="#buildx_build-out_dirs">out_dirs</a>, <a href="#buildx_build-output_type">output_type</a>, <a href="#buildx_build-path">path</a>, <a href="#buildx_build-platforms">platforms</a>)
@@ -40,7 +40,7 @@ Runs BuildX to produce OCI images or local outputs using a Dockerfile.
 ## buildx_context_local
 
 <pre>
-load("@aspect_rules_buildx//buildx:defs.bzl", "buildx_context_local")
+load("@rules_buildx//buildx:defs.bzl", "buildx_context_local")
 
 buildx_context_local(<a href="#buildx_context_local-name">name</a>, <a href="#buildx_context_local-srcs">srcs</a>)
 </pre>
@@ -61,7 +61,7 @@ Creates a reusable BuildX build context from a list of sources.
 ## buildx_context_oci_layout
 
 <pre>
-load("@aspect_rules_buildx//buildx:defs.bzl", "buildx_context_oci_layout")
+load("@rules_buildx//buildx:defs.bzl", "buildx_context_oci_layout")
 
 buildx_context_oci_layout(<a href="#buildx_context_oci_layout-name">name</a>, <a href="#buildx_context_oci_layout-layout">layout</a>)
 </pre>

@@ -1,4 +1,4 @@
-load("@aspect_rules_buildx//buildx:defs.bzl", "buildx_build", "buildx_context_local", "buildx_context_oci_layout")
+load("@rules_buildx//buildx:defs.bzl", "buildx_build", "buildx_context_local", "buildx_context_oci_layout")
 load("@bazel_skylib//rules:build_test.bzl", "build_test")
 load("@rules_oci//oci:defs.bzl", "oci_image", "oci_load")
 
@@ -133,7 +133,7 @@ genrule(
     name = "version",
     outs = ["version.txt"],
     cmd = """"$(BUILDX_BIN)" version >$@""",
-    toolchains = ["@aspect_rules_buildx//buildx:resolved_toolchain"],
+    toolchains = ["@rules_buildx//buildx:resolved_toolchain"],
 )
 
 build_test(

@@ -1,4 +1,4 @@
-load("@aspect_rules_buildx//buildx:defs.bzl", "buildx_build")
+load("@rules_buildx//buildx:defs.bzl", "buildx_build")
 load("@rules_img//img:convert.bzl", "image_index_from_oci_layout")
 load("@rules_img//img:load.bzl", "image_load")
 

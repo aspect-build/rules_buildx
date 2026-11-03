@@ -188,8 +188,8 @@
   "moduleExtensions": {
     "//buildx:extensions.bzl%buildx": {
       "general": {
-        "bzlTransitiveDigest": "Jgk1NFgpLyt6+OBws63Jw1/t6IHjwiFk9he4vPcTLeg=",
-        "usagesDigest": "AK6wbDaLuCyeiagrbeleMh1xKRQIF2+snUSPlm7sMHY=",
+        "bzlTransitiveDigest": "fFnjtGfgjHuLvXHMPV89W9Xs4dQ4CEDeDTu43CSQB7s=",
+        "usagesDigest": "AIwbmyHMxY4VDLYELWWvfj18PEiNOQ3OfPmCpg6GeJU=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
         "envVariables": {},

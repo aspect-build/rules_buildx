@@ -25,7 +25,7 @@ def _buildx_repo_impl(rctx):
 # QUICK HACK
 load("@buildx_configuration//:defs.bzl", "TARGET_COMPATIBLE_WITH")
 
-load("@aspect_rules_buildx//buildx:toolchain.bzl", "buildx_toolchain")
+load("@rules_buildx//buildx:toolchain.bzl", "buildx_toolchain")
 
 buildx_toolchain(
     name = "buildx_toolchain",
