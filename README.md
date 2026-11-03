@@ -48,7 +48,3 @@ This ruleset is still in alpha, but an example of usage may be found [here](http
 - https://github.com/moby/moby/issues/43124
 - https://github.com/moby/buildkit/blob/master/docs/build-repro.md
 - https://medium.com/nttlabs/bit-for-bit-reproducible-builds-with-dockerfile-7cc2b9faed9f
-
-# Telemetry & privacy policy
-
-This ruleset collects limited usage data via [`tools_telemetry`](https://github.com/aspect-build/tools_telemetry), which is reported to Aspect Build Inc and governed by our [privacy policy](https://www.aspect.build/privacy-policy).
