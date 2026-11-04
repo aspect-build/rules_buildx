@@ -24,7 +24,7 @@ Runs BuildX to produce OCI images or local outputs using a Dockerfile.
 | <a id="buildx_build-srcs"></a>srcs |  Additional sources read during the build.   | <a href="https://bazel.build/concepts/labels">List of labels</a> | optional |  `[]`  |
 | <a id="buildx_build-outs"></a>outs |  List of output files.   | List of strings | optional |  `[]`  |
 | <a id="buildx_build-build_context"></a>build_context |  Dictionary mapping BuildX context names to buildx_context targets.   | Dictionary: String -> Label | optional |  `{}`  |
-| <a id="buildx_build-builder_name"></a>builder_name |  Existing builder name to use. When set, this rule does not create or remove the builder.   | String | optional |  `""`  |
+| <a id="buildx_build-builder_name"></a>builder_name |  Existing builder name to use. When set, this rule does not create or remove the builder.<br><br>The builder is looked up in the user's `~/.docker/buildx`, so it must have been created with `docker buildx create` by the user running Bazel, and is only usable with local or sandboxed execution.   | String | optional |  `""`  |
 | <a id="buildx_build-builder_name_prefix"></a>builder_name_prefix |  Prefix for the temporary builder name created and removed by this rule.   | String | optional |  `"rules_buildx_builder"`  |
 | <a id="buildx_build-buildx_flags"></a>buildx_flags |  Additional flags to pass to docker buildx build.   | List of strings | optional |  `[]`  |
 | <a id="buildx_build-dockerfile"></a>dockerfile |  Label to the Dockerfile to use for this build.   | <a href="https://bazel.build/concepts/labels">Label</a> | required |  |
