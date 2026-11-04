@@ -128,6 +128,16 @@ oci_load(
     repo_tags = ["bazel/rules_buildx_motd:latest"],
 )
 
+# Requires a builder created beforehand with `docker buildx create --name rules_buildx_e2e`.
+buildx_build(
+    name = "motd_existing_builder",
+    srcs = ["motd.txt"],
+    builder_name = "rules_buildx_e2e",
+    dockerfile = ":motd.Dockerfile",
+    platforms = ["linux/arm64"],
+    tags = ["manual"],
+)
+
 # Using the toolchain in a genrule
 genrule(
     name = "version",
