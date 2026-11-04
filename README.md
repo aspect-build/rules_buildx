@@ -1,5 +1,8 @@
 # Bazel rules for BuildX
 
+> [!IMPORTANT]
+> This module was previously published as `aspect_rules_buildx`. To upgrade, replace `aspect_rules_buildx` with `rules_buildx` in your `bazel_dep`, `load()` statements and flags.
+
 Bazel rules for [buildx](https://github.com/docker/buildx) so you can use your existing Dockerfiles with Bazel.
 
 ## Why would you want this?
@@ -34,7 +37,7 @@ Follow instructions from the release you wish to use:
 [^1]: Not well suited for containerized build environments due to Docker-in-Docker.
 [^2]: A hard dependency on Docker runtime [^3] is introduced.
 [^3]: BuildX does not work with other container runtimes such as podman.
-[^4]: aspect_rules_buildx has some builtin mechanisms for offline builds. (requires configuration)
+[^4]: rules_buildx has some builtin mechanisms for offline builds. (requires configuration)
 
 # Usage
 

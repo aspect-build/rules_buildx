@@ -191,7 +191,7 @@
   },
   "selectedYankedVersions": {},
   "moduleExtensions": {
-    "@@aspect_rules_buildx~//buildx:extensions.bzl%buildx": {
+    "@@rules_buildx~//buildx:extensions.bzl%buildx": {
       "general": {
         "bzlTransitiveDigest": "DTUtxGXrYMdnqEFyQ+4w3rOpWqthVSHhHiv6cwTr1kY=",
         "usagesDigest": "YzO+O3JCsza05TdYFamiD3hPWuve/vFWHM/2HG1di1s=",
@@ -200,7 +200,7 @@
         "envVariables": {},
         "generatedRepoSpecs": {
           "buildx_darwin-amd64": {
-            "bzlFile": "@@aspect_rules_buildx~//buildx:repositories.bzl",
+            "bzlFile": "@@rules_buildx~//buildx:repositories.bzl",
             "ruleClassName": "buildx_repo",
             "attributes": {
               "platform": "darwin-amd64",
@@ -208,7 +208,7 @@
             }
           },
           "buildx_darwin-arm64": {
-            "bzlFile": "@@aspect_rules_buildx~//buildx:repositories.bzl",
+            "bzlFile": "@@rules_buildx~//buildx:repositories.bzl",
             "ruleClassName": "buildx_repo",
             "attributes": {
               "platform": "darwin-arm64",
@@ -216,7 +216,7 @@
             }
           },
           "buildx_linux-arm64": {
-            "bzlFile": "@@aspect_rules_buildx~//buildx:repositories.bzl",
+            "bzlFile": "@@rules_buildx~//buildx:repositories.bzl",
             "ruleClassName": "buildx_repo",
             "attributes": {
               "platform": "linux-arm64",
@@ -224,7 +224,7 @@
             }
           },
           "buildx_linux-amd64": {
-            "bzlFile": "@@aspect_rules_buildx~//buildx:repositories.bzl",
+            "bzlFile": "@@rules_buildx~//buildx:repositories.bzl",
             "ruleClassName": "buildx_repo",
             "attributes": {
               "platform": "linux-amd64",
@@ -232,7 +232,7 @@
             }
           },
           "buildx_windows-arm64": {
-            "bzlFile": "@@aspect_rules_buildx~//buildx:repositories.bzl",
+            "bzlFile": "@@rules_buildx~//buildx:repositories.bzl",
             "ruleClassName": "buildx_repo",
             "attributes": {
               "platform": "windows-arm64",
@@ -240,7 +240,7 @@
             }
           },
           "buildx_windows-amd64": {
-            "bzlFile": "@@aspect_rules_buildx~//buildx:repositories.bzl",
+            "bzlFile": "@@rules_buildx~//buildx:repositories.bzl",
             "ruleClassName": "buildx_repo",
             "attributes": {
               "platform": "windows-amd64",
@@ -248,12 +248,12 @@
             }
           },
           "buildx_configuration": {
-            "bzlFile": "@@aspect_rules_buildx~//buildx:repositories.bzl",
+            "bzlFile": "@@rules_buildx~//buildx:repositories.bzl",
             "ruleClassName": "configure_buildx",
             "attributes": {}
           },
           "buildx_toolchains": {
-            "bzlFile": "@@aspect_rules_buildx~//buildx/private:toolchains_repo.bzl",
+            "bzlFile": "@@rules_buildx~//buildx/private:toolchains_repo.bzl",
             "ruleClassName": "toolchains_repo",
             "attributes": {
               "user_repository_name": "buildx"
@@ -271,7 +271,7 @@
         },
         "recordedRepoMappingEntries": [
           [
-            "aspect_rules_buildx~",
+            "rules_buildx~",
             "aspect_tools_telemetry_report",
             "aspect_tools_telemetry~~telemetry~aspect_tools_telemetry_report"
           ]
@@ -291,7 +291,7 @@
             "ruleClassName": "tel_repository",
             "attributes": {
               "deps": {
-                "aspect_rules_buildx": "",
+                "rules_buildx": "",
                 "aspect_tools_telemetry": "0.2.8"
               }
             }

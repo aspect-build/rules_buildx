@@ -249,62 +249,62 @@
   },
   "selectedYankedVersions": {},
   "moduleExtensions": {
-    "@@aspect_rules_buildx+//buildx:extensions.bzl%buildx": {
+    "@@rules_buildx+//buildx:extensions.bzl%buildx": {
       "general": {
         "bzlTransitiveDigest": "DTUtxGXrYMdnqEFyQ+4w3rOpWqthVSHhHiv6cwTr1kY=",
         "usagesDigest": "ZpR2jcmQDJm6iLdWYU3OA5wygPSnNlKJ7JYbD/rhkuc=",
         "recordedInputs": [
-          "REPO_MAPPING:aspect_rules_buildx+,aspect_tools_telemetry_report aspect_tools_telemetry++telemetry+aspect_tools_telemetry_report"
+          "REPO_MAPPING:rules_buildx+,aspect_tools_telemetry_report aspect_tools_telemetry++telemetry+aspect_tools_telemetry_report"
         ],
         "generatedRepoSpecs": {
           "buildx_darwin-amd64": {
-            "repoRuleId": "@@aspect_rules_buildx+//buildx:repositories.bzl%buildx_repo",
+            "repoRuleId": "@@rules_buildx+//buildx:repositories.bzl%buildx_repo",
             "attributes": {
               "platform": "darwin-amd64",
               "buildx_version": "0.28.0"
             }
           },
           "buildx_darwin-arm64": {
-            "repoRuleId": "@@aspect_rules_buildx+//buildx:repositories.bzl%buildx_repo",
+            "repoRuleId": "@@rules_buildx+//buildx:repositories.bzl%buildx_repo",
             "attributes": {
               "platform": "darwin-arm64",
               "buildx_version": "0.28.0"
             }
           },
           "buildx_linux-arm64": {
-            "repoRuleId": "@@aspect_rules_buildx+//buildx:repositories.bzl%buildx_repo",
+            "repoRuleId": "@@rules_buildx+//buildx:repositories.bzl%buildx_repo",
             "attributes": {
               "platform": "linux-arm64",
               "buildx_version": "0.28.0"
             }
           },
           "buildx_linux-amd64": {
-            "repoRuleId": "@@aspect_rules_buildx+//buildx:repositories.bzl%buildx_repo",
+            "repoRuleId": "@@rules_buildx+//buildx:repositories.bzl%buildx_repo",
             "attributes": {
               "platform": "linux-amd64",
               "buildx_version": "0.28.0"
             }
           },
           "buildx_windows-arm64": {
-            "repoRuleId": "@@aspect_rules_buildx+//buildx:repositories.bzl%buildx_repo",
+            "repoRuleId": "@@rules_buildx+//buildx:repositories.bzl%buildx_repo",
             "attributes": {
               "platform": "windows-arm64",
               "buildx_version": "0.28.0"
             }
           },
           "buildx_windows-amd64": {
-            "repoRuleId": "@@aspect_rules_buildx+//buildx:repositories.bzl%buildx_repo",
+            "repoRuleId": "@@rules_buildx+//buildx:repositories.bzl%buildx_repo",
             "attributes": {
               "platform": "windows-amd64",
               "buildx_version": "0.28.0"
             }
           },
           "buildx_configuration": {
-            "repoRuleId": "@@aspect_rules_buildx+//buildx:repositories.bzl%configure_buildx",
+            "repoRuleId": "@@rules_buildx+//buildx:repositories.bzl%configure_buildx",
             "attributes": {}
           },
           "buildx_toolchains": {
-            "repoRuleId": "@@aspect_rules_buildx+//buildx/private:toolchains_repo.bzl%toolchains_repo",
+            "repoRuleId": "@@rules_buildx+//buildx/private:toolchains_repo.bzl%toolchains_repo",
             "attributes": {
               "user_repository_name": "buildx"
             }
@@ -334,7 +334,7 @@
             "repoRuleId": "@@aspect_tools_telemetry+//:extension.bzl%tel_repository",
             "attributes": {
               "deps": {
-                "aspect_rules_buildx": "",
+                "rules_buildx": "",
                 "aspect_tools_telemetry": "0.2.8"
               }
             }

@@ -1,7 +1,7 @@
 "buildx rules"
 
 module(
-    name = "aspect_rules_buildx",
+    name = "rules_buildx",
 )
 
 bazel_dep(name = "aspect_bazel_lib", version = "2.21.2")
