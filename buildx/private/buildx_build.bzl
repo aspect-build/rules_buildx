@@ -205,6 +205,16 @@ if [ -z "$builder_name" ]; then
         cleanup_tmpdir
     }
     trap cleanup EXIT
+else
+    # BUILDX_CONFIG must stay writable inside the sandbox (buildx records activity and build refs
+    # there), so only the user's builder definition is copied in from their buildx config.
+    user_buildx_config="$(cd ~ && pwd)/.docker/buildx"
+    if [ ! -f "$user_buildx_config/instances/$builder_name" ]; then
+        echo "builder '$builder_name' not found in $user_buildx_config/instances" >&2
+        exit 1
+    fi
+    mkdir -p "$BUILDX_CONFIG/instances"
+    cp "$user_buildx_config/instances/$builder_name" "$BUILDX_CONFIG/instances/"
 fi
 
 "$buildx" build --builder "$builder_name" --file "$dockerfile" "${staged_args[@]}"
@@ -249,7 +259,11 @@ buildx_build = rule(
             doc = "Execution requirements for the action.",
         ),
         "builder_name": attr.string(
-            doc = "Existing builder name to use. When set, this rule does not create or remove the builder.",
+            doc = """Existing builder name to use. When set, this rule does not create or remove the builder.
+
+            The builder is looked up in the user's `~/.docker/buildx`, so it must have been created
+            with `docker buildx create` by the user running Bazel, and is only usable with local or
+            sandboxed execution.""",
         ),
         "builder_name_prefix": attr.string(
             default = "rules_buildx_builder",
