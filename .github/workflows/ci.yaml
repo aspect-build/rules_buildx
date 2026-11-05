@@ -24,6 +24,14 @@ jobs:
           {"bzlmodEnabled": false},
           {"os": "macos-latest", "folder": "e2e/smoke"}
         ]
+  # builder_name needs a builder created outside Bazel, so it can't run in the shared matrix or BCR presubmit.
+  builder-name:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - run: docker buildx create --name rules_buildx_e2e --driver docker-container --bootstrap
+      - working-directory: e2e/smoke
+        run: bazel build //:motd_existing_builder
   pre-commit:
     runs-on: ubuntu-latest
     steps:
@@ -32,7 +40,7 @@ jobs:
   # For branch protection settings, this job provides a "stable" name that can be used to gate PR merges
   # on "all matrix jobs were successful".
   conclusion:
-    needs: [test, pre-commit]
+    needs: [test, builder-name, pre-commit]
     runs-on: ubuntu-latest
     if: always()
     steps:
