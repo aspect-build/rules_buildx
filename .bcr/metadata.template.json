@@ -2,7 +2,7 @@
   "homepage": "https://docs.aspect.build/rules/aspect_rules_buildx",
   "maintainers": [
     {
-      "email": "hesayyn@gmail.com",
+      "email": "thesayyn@gmail.com",
       "github": "thesayyn",
       "name": "Şahin Yort"
     },
@@ -11,16 +11,6 @@
       "github": "xangcastle",
       "github_user_id": 13787208,
       "name": "Cesar Abel"
-    },
-    {
-      "email": "greg@aspect.build",
-      "github": "gregmagolan",
-      "name": "Greg Magolan"
-    },
-    {
-      "email": "adamc@aspect.build",
-      "github": "acozzette",
-      "name": "Adam Cozzette"
     }
   ],
   "repository": ["github:aspect-build/rules_buildx"],
