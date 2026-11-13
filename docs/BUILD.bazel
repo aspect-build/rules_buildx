@@ -1,10 +1,22 @@
+load("@bazel_lib//lib:write_source_files.bzl", "write_source_files")
+
 # This load statement must be in the docs/ package rather than anything users depend on
 # so that the dependency on stardoc doesn't leak to them.
-load("@aspect_bazel_lib//lib:docs.bzl", "stardoc_with_diff_test", "update_docs")
+load("@stardoc//stardoc:stardoc.bzl", "stardoc")
 
-stardoc_with_diff_test(
+stardoc(
     name = "rules",
-    bzl_library_target = "//buildx:defs",
+    out = "rules-docgen.md",
+    input = "//buildx:defs.bzl",
+    # stardoc produces different line endings on Windows, which makes the diff test fail.
+    target_compatible_with = select({
+        "@platforms//os:windows": ["@platforms//:incompatible"],
+        "//conditions:default": [],
+    }),
+    deps = ["//buildx:defs"],
 )
 
-update_docs(name = "update")
+write_source_files(
+    name = "update",
+    files = {"rules.md": ":rules"},
+)

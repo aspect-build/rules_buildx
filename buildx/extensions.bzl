@@ -10,6 +10,7 @@ names (the latest version will be picked for each name) and can register them as
 effectively overriding the default named toolchain due to toolchain resolution precedence.
 """
 
+load("//buildx/private:versions.bzl", "DEFAULT_BUILDX_VERSION", "latest_version")
 load(":repositories.bzl", "buildx_register_toolchains")
 
 _DEFAULT_NAME = "buildx"
@@ -19,7 +20,7 @@ buildx_toolchain = tag_class(attrs = {
 Base name for generated repositories, allowing more than one buildx toolchain to be registered.
 Overriding the default is only permitted in the root module.
 """, default = _DEFAULT_NAME),
-    "buildx_version": attr.string(doc = "Explicit version of buildx.", default = "0.28.0"),
+    "buildx_version": attr.string(doc = "Explicit version of buildx.", default = DEFAULT_BUILDX_VERSION),
 })
 
 def _toolchain_extension(module_ctx):
@@ -36,8 +37,7 @@ def _toolchain_extension(module_ctx):
             registrations[toolchain.name].append(toolchain.buildx_version)
     for name, versions in registrations.items():
         if len(versions) > 1:
-            # TODO: should be semver-aware, using MVS
-            selected = sorted(versions, reverse = True)[0]
+            selected = latest_version(versions)
 
             # buildifier: disable=print
             print("NOTE: buildx toolchain {} has multiple versions {}, selected {}".format(name, versions, selected))
@@ -51,8 +51,11 @@ def _toolchain_extension(module_ctx):
         )
 
     return module_ctx.extension_metadata(
-        root_module_direct_deps = ["buildx_toolchains", "buildx_configuration"],
+        root_module_direct_deps = ["buildx_toolchains"],
         root_module_direct_dev_deps = [],
+        # Every download is pinned by sha256, so the result does not need to be
+        # recorded in MODULE.bazel.lock.
+        reproducible = True,
     )
 
 buildx = module_extension(

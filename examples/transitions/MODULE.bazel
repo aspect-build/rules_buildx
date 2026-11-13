@@ -1,6 +1,6 @@
-"rules_buildx example with rules_img"
+"rules_buildx example with platform transitions"
 
-module(name = "rules_buildx_rules_img_example")
+module(name = "rules_buildx_transitions_example")
 
 bazel_dep(name = "rules_buildx", version = "0.0.0")
 local_path_override(

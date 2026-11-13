@@ -6,7 +6,7 @@ exports_files(["defs.bzl"])
 
 # This is the target rule authors should put in their "toolchains"
 # attribute in order to get a runtime for the correct platform.
-# See https://docs.bazel.build/versions/main/toolchains.html#writing-rules-that-use-toolchains
+# See https://bazel.build/extending/toolchains#writing-rules-that-use-toolchains
 toolchain_type(
     name = "toolchain_type",
     visibility = ["//visibility:public"],
@@ -27,8 +27,6 @@ bzl_library(
     deps = [
         "//buildx/private:toolchains_repo",
         "//buildx/private:versions",
-        "@bazel_tools//tools/build_defs/repo:http.bzl",
-        "@bazel_tools//tools/build_defs/repo:utils.bzl",
     ],
 )
 
@@ -36,7 +34,10 @@ bzl_library(
     name = "extensions",
     srcs = ["extensions.bzl"],
     visibility = ["//visibility:public"],
-    deps = [":repositories"],
+    deps = [
+        ":repositories",
+        "//buildx/private:versions",
+    ],
 )
 
 bzl_library(

@@ -27,17 +27,12 @@ Run `bazel run //tools:gazelle` to keep them up-to-date.
 
 ## Using this as a development dependency of other rules
 
-You'll commonly find that you develop in another WORKSPACE, such as
-some other ruleset that depends on rules_buildx, or in a nested
-WORKSPACE in the integration_tests folder.
-
-To always tell Bazel to use this directory rather than some release
-artifact or a version fetched from the internet, run this from this
-directory:
+To try your changes in some other project that depends on rules_buildx, tell Bazel to
+use this directory instead of a released version by running this from the root of
+your rules_buildx checkout:
 
 ```sh
-OVERRIDE="--override_repository=rules_buildx=$(pwd)/rules_buildx"
-echo "common $OVERRIDE" >> ~/.bazelrc
+echo "common --override_module=rules_buildx=$(pwd)" >> ~/.bazelrc
 ```
 
 This means that any usage of `@rules_buildx` on your system will point to this folder.

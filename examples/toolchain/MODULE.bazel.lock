@@ -247,11 +247,6 @@
               "buildx_version": "0.28.0"
             }
           },
-          "buildx_configuration": {
-            "bzlFile": "@@rules_buildx~//buildx:repositories.bzl",
-            "ruleClassName": "configure_buildx",
-            "attributes": {}
-          },
           "buildx_toolchains": {
             "bzlFile": "@@rules_buildx~//buildx/private:toolchains_repo.bzl",
             "ruleClassName": "toolchains_repo",
@@ -262,8 +257,7 @@
         },
         "moduleExtensionMetadata": {
           "explicitRootModuleDirectDeps": [
-            "buildx_toolchains",
-            "buildx_configuration"
+            "buildx_toolchains"
           ],
           "explicitRootModuleDirectDevDeps": [],
           "useAllRepos": "NO",
