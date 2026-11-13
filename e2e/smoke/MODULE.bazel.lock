@@ -47,6 +47,8 @@
     "https://bcr.bazel.build/modules/bazel_features/1.42.1/source.json": "fcd4396b2df85f64f2b3bb436ad870793ecf39180f1d796f913cc9276d355309",
     "https://bcr.bazel.build/modules/bazel_features/1.9.0/MODULE.bazel": "885151d58d90d8d9c811eb75e3288c11f850e1d6b481a8c9f766adee4712358b",
     "https://bcr.bazel.build/modules/bazel_features/1.9.1/MODULE.bazel": "8f679097876a9b609ad1f60249c49d68bfab783dd9be012faf9d82547b14815a",
+    "https://bcr.bazel.build/modules/bazel_lib/3.8.0/MODULE.bazel": "ac892a5b9b1d6b755c915f1e82663cb71ebffb4183d57f95c6507fafc2cac53a",
+    "https://bcr.bazel.build/modules/bazel_lib/3.8.0/source.json": "45eb621b9efa8fbc4c1c9f2ea484fc0e330558a1d8e120b063f7463363adc854",
     "https://bcr.bazel.build/modules/bazel_skylib/1.0.3/MODULE.bazel": "bcb0fd896384802d1ad283b4e4eb4d718eebd8cb820b0a2c3a347fb971afd9d8",
     "https://bcr.bazel.build/modules/bazel_skylib/1.1.1/MODULE.bazel": "1add3e7d93ff2e6998f9e118022c84d163917d912f5afafb3058e3d2f1545b5e",
     "https://bcr.bazel.build/modules/bazel_skylib/1.2.0/MODULE.bazel": "44fe84260e454ed94ad326352a698422dbe372b21a1ac9f3eab76eb531223686",
@@ -244,98 +246,6 @@
   },
   "selectedYankedVersions": {},
   "moduleExtensions": {
-    "@@pybind11_bazel+//:internal_configure.bzl%internal_configure_extension": {
-      "general": {
-        "bzlTransitiveDigest": "BsgERqYptkJeeC8wFaLj251IoTZTSy/58WA6kVp0q8I=",
-        "usagesDigest": "D1r3lfzMuUBFxgG8V6o0bQTLMk3GkaGOaPzw53wrwyw=",
-        "recordedInputs": [
-          "REPO_MAPPING:pybind11_bazel+,bazel_tools bazel_tools",
-          "FILE:@@pybind11_bazel+//MODULE.bazel e6f4c20442eaa7c90d7190d8dc539d0ab422f95c65a57cc59562170c58ae3d34"
-        ],
-        "generatedRepoSpecs": {
-          "pybind11": {
-            "repoRuleId": "@@bazel_tools//tools/build_defs/repo:http.bzl%http_archive",
-            "attributes": {
-              "build_file": "@@pybind11_bazel+//:pybind11-BUILD.bazel",
-              "strip_prefix": "pybind11-2.12.0",
-              "urls": [
-                "https://github.com/pybind/pybind11/archive/v2.12.0.zip"
-              ]
-            }
-          }
-        }
-      }
-    },
-    "@@rules_buildx+//buildx:extensions.bzl%buildx": {
-      "general": {
-        "bzlTransitiveDigest": "fFnjtGfgjHuLvXHMPV89W9Xs4dQ4CEDeDTu43CSQB7s=",
-        "usagesDigest": "OnGUa3RzsH74cJ83Ex9tIGCDE3eYmSyqZkazzcJKs2E=",
-        "recordedInputs": [],
-        "generatedRepoSpecs": {
-          "buildx_darwin-amd64": {
-            "repoRuleId": "@@rules_buildx+//buildx:repositories.bzl%buildx_repo",
-            "attributes": {
-              "platform": "darwin-amd64",
-              "buildx_version": "0.28.0"
-            }
-          },
-          "buildx_darwin-arm64": {
-            "repoRuleId": "@@rules_buildx+//buildx:repositories.bzl%buildx_repo",
-            "attributes": {
-              "platform": "darwin-arm64",
-              "buildx_version": "0.28.0"
-            }
-          },
-          "buildx_linux-arm64": {
-            "repoRuleId": "@@rules_buildx+//buildx:repositories.bzl%buildx_repo",
-            "attributes": {
-              "platform": "linux-arm64",
-              "buildx_version": "0.28.0"
-            }
-          },
-          "buildx_linux-amd64": {
-            "repoRuleId": "@@rules_buildx+//buildx:repositories.bzl%buildx_repo",
-            "attributes": {
-              "platform": "linux-amd64",
-              "buildx_version": "0.28.0"
-            }
-          },
-          "buildx_windows-arm64": {
-            "repoRuleId": "@@rules_buildx+//buildx:repositories.bzl%buildx_repo",
-            "attributes": {
-              "platform": "windows-arm64",
-              "buildx_version": "0.28.0"
-            }
-          },
-          "buildx_windows-amd64": {
-            "repoRuleId": "@@rules_buildx+//buildx:repositories.bzl%buildx_repo",
-            "attributes": {
-              "platform": "windows-amd64",
-              "buildx_version": "0.28.0"
-            }
-          },
-          "buildx_configuration": {
-            "repoRuleId": "@@rules_buildx+//buildx:repositories.bzl%configure_buildx",
-            "attributes": {}
-          },
-          "buildx_toolchains": {
-            "repoRuleId": "@@rules_buildx+//buildx/private:toolchains_repo.bzl%toolchains_repo",
-            "attributes": {
-              "user_repository_name": "buildx"
-            }
-          }
-        },
-        "moduleExtensionMetadata": {
-          "explicitRootModuleDirectDeps": [
-            "buildx_toolchains",
-            "buildx_configuration"
-          ],
-          "explicitRootModuleDirectDevDeps": [],
-          "useAllRepos": "NO",
-          "reproducible": false
-        }
-      }
-    },
     "@@rules_kotlin+//src/main/starlark/core/repositories:bzlmod_setup.bzl%rules_kotlin_extensions": {
       "general": {
         "bzlTransitiveDigest": "WDuVCwqV73DvcHB5Of+02lhUZgPxr9MqtpvMRyUi0eQ=",

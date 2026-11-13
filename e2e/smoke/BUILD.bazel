@@ -87,7 +87,7 @@ buildx_build(
 buildx_build(
     name = "curl_buildx_linux_amd64",
     dockerfile = ":curl.Dockerfile",
-    platforms = ["linux/arm64"],
+    platforms = ["linux/amd64"],
     target_compatible_with = select({
         "@platforms//os:windows": ["@platforms//:incompatible"],
         "//conditions:default": [],

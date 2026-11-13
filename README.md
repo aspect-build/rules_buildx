@@ -1,8 +1,5 @@
 # Bazel rules for BuildX
 
-> [!IMPORTANT]
-> This module was previously published as `aspect_rules_buildx`. To upgrade, replace `aspect_rules_buildx` with `rules_buildx` in your `bazel_dep`, `load()` statements and flags.
-
 Bazel rules for [buildx](https://github.com/docker/buildx) so you can use your existing Dockerfiles with Bazel.
 
 ## Why would you want this?
@@ -31,17 +28,21 @@ Follow instructions from the release you wish to use:
 
 ## Requirements
 
-- Functioning Docker runtime required to be installed on the execution environment. [^2]
-- Actions must[^4] have access to network.
+- A working Docker runtime on the execution environment.[^1] BuildX does not work with other
+  container runtimes such as podman.
+- Network access for `buildx_build` actions.[^2]
 
-[^1]: Not well suited for containerized build environments due to Docker-in-Docker.
-[^2]: A hard dependency on Docker runtime [^3] is introduced.
-[^3]: BuildX does not work with other container runtimes such as podman.
-[^4]: rules_buildx has some builtin mechanisms for offline builds. (requires configuration)
+[^1]: This makes rules_buildx a poor fit for containerized build environments, which would need Docker-in-Docker.
+[^2]: Base images don't have to come from a registry: `buildx_context_oci_layout` can supply an OCI layout fetched by Bazel, such as one from `oci.pull` in rules_oci. See [`e2e/smoke`](e2e/smoke/BUILD.bazel).
 
 # Usage
 
-This ruleset is still in alpha, but an example of usage may be found [here](https://github.com/arrdem/bazel-multipy/blob/trunk/tools/docker/BUILD.bazel).
+See the [API documentation](docs/rules.md), the end-to-end test in [`e2e/smoke`](e2e/smoke/BUILD.bazel),
+and the [examples](examples/):
+
+- [`examples/rules_img`](examples/rules_img): import a multi-platform image into rules_img.
+- [`examples/toolchain`](examples/toolchain): call the `buildx` binary from a `genrule`.
+- [`examples/transitions`](examples/transitions): build for the platform selected by a transition.
 
 # Resources
 

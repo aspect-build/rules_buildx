@@ -26,7 +26,7 @@ def _copy_sources_to_context_impl(ctx):
         rel_path = _repo_relative_path(src)
 
         # Keep paths relative to this package when possible, otherwise repository-relative.
-        if (package_prefix and src.owner.workspace_name == ctx.label.workspace_name and
+        if (package_prefix and src.owner.repo_name == ctx.label.repo_name and
             rel_path.startswith(package_prefix)):
             rel_path = rel_path[len(package_prefix):]
 
@@ -92,12 +92,12 @@ buildx_context_local = rule(
 
 def _oci_layout_buildx_workaround_impl(ctx):
     output = ctx.actions.declare_directory(ctx.label.name)
-    coreutils = ctx.toolchains["@aspect_bazel_lib//lib:coreutils_toolchain_type"].coreutils_info.bin
+    coreutils = ctx.toolchains["@bazel_lib//lib:coreutils_toolchain_type"].coreutils_info.bin
     ctx.actions.run_shell(
         outputs = [output],
         inputs = [ctx.file.layout],
         tools = [coreutils],
-        toolchain = "@aspect_bazel_lib//lib:coreutils_toolchain_type",
+        toolchain = "@bazel_lib//lib:coreutils_toolchain_type",
         command = '''
 for blob in $($COREUTILS ls -1 -d "$LAYOUT/blobs/"*/*); do
     relative_to_blobs="${blob#"$LAYOUT/blobs"}"
@@ -141,5 +141,5 @@ buildx_context_oci_layout = rule(
         ),
     },
     doc = "Creates a reusable BuildX context from an OCI layout.",
-    toolchains = ["@aspect_bazel_lib//lib:coreutils_toolchain_type"],
+    toolchains = ["@bazel_lib//lib:coreutils_toolchain_type"],
 )

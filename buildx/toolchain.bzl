@@ -8,16 +8,9 @@ BuildXInfo = provider(
     },
 )
 
-# Avoid using non-normalized paths (workspace/../other_workspace/path)
-# def _to_manifest_path(ctx, file):
-#     if file.short_path.startswith("../"):
-#         return "external/" + file.short_path[3:]
-#     else:
-#         return ctx.workspace_name + "/" + file.short_path
-
 def _buildx_toolchain_impl(ctx):
-    # Make the $(tool_BIN) variable available in places like genrules.
-    # See https://docs.bazel.build/versions/main/be/make-variables.html#custom_variables
+    # Make the $(BUILDX_BIN) variable available in places like genrules.
+    # See https://bazel.build/reference/be/make-variables#custom_variables
     template_variables = platform_common.TemplateVariableInfo({
         "BUILDX_BIN": ctx.executable.buildx.path,
     })
@@ -55,6 +48,6 @@ buildx_toolchain = rule(
     },
     doc = """Defines a buildx compiler/runtime toolchain.
 
-For usage see https://docs.bazel.build/versions/main/toolchains.html#defining-toolchains.
+For usage see https://bazel.build/extending/toolchains#defining-toolchains.
 """,
 )

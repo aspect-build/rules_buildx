@@ -1,7 +1,7 @@
 """Create a repository to hold the toolchains
 
 This follows guidance here:
-https://docs.bazel.build/versions/main/skylark/deploying.html#registering-toolchains
+https://bazel.build/rules/deploying#registering-toolchains
 "
 Note that in order to resolve toolchains in the analysis phase
 Bazel needs to analyze all toolchain targets that are registered.
