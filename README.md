@@ -52,3 +52,9 @@ and the [examples](examples/):
 - https://github.com/moby/moby/issues/43124
 - https://github.com/moby/buildkit/blob/master/docs/build-repro.md
 - https://medium.com/nttlabs/bit-for-bit-reproducible-builds-with-dockerfile-7cc2b9faed9f
+
+## Support
+
+This ruleset is community-supported with help from [Aspect](https://aspect.build).
+We review pull requests and fix critical issues when we can, but we cannot promise timelines.
+Contributions are welcome.
