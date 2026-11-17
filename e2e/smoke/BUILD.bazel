@@ -1,5 +1,6 @@
 load("@bazel_lib//lib:copy_to_directory.bzl", "copy_to_directory")
 load("@bazel_skylib//rules:build_test.bzl", "build_test")
+load("@bazel_skylib//rules:diff_test.bzl", "diff_test")
 load("@rules_buildx//buildx:defs.bzl", "buildx_build", "buildx_context_local", "buildx_context_oci_layout")
 load("@rules_oci//oci:defs.bzl", "oci_image", "oci_load")
 
@@ -163,6 +164,30 @@ buildx_build(
         "@platforms//os:windows": ["@platforms//:incompatible"],
         "//conditions:default": [],
     }),
+)
+
+# --action_env reaches buildx: DOCKER_CONFIG is set in .bazelrc and its noProxy becomes NO_PROXY in the build.
+# srcs only puts the config in the sandbox; the Dockerfile doesn't use it.
+buildx_build(
+    name = "action_env",
+    srcs = ["docker_config/config.json"],
+    outs = ["no_proxy.txt"],
+    build_context = {
+        "python:3.11.17-bookworm": ":python_context",
+    },
+    dockerfile = ":action_env.Dockerfile",
+    output_type = "local",
+    platforms = ["linux/amd64"],
+    target_compatible_with = select({
+        "@platforms//os:windows": ["@platforms//:incompatible"],
+        "//conditions:default": [],
+    }),
+)
+
+diff_test(
+    name = "action_env_test",
+    file1 = ":action_env",
+    file2 = "no_proxy_expected.txt",
 )
 
 # Using the toolchain in a genrule
