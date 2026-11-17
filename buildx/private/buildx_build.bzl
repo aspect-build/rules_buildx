@@ -117,6 +117,9 @@ def _buildx_build_impl(ctx):
         env = {
             "PATH": "/bin:/usr/bin:/usr/local/bin:/opt/homebrew/bin:/Applications/Docker.app/Contents/Resources/bin",
         },
+        # Lets users pass --action_env (DOCKER_CONFIG, or what credential helpers read, such as HOME
+        # or AWS_PROFILE). Since Bazel 7 it is merged with `env`, which wins, so PATH stays fixed.
+        use_default_shell_env = True,
         command = """
 set -euo pipefail
 
@@ -292,6 +295,11 @@ buildx_build = rule(
         "_windows_constraint": attr.label(default = "@platforms//os:windows"),
         "_x86_64_constraint": attr.label(default = "@platforms//cpu:x86_64"),
     },
-    doc = "Runs BuildX to produce OCI images or local outputs using a Dockerfile.",
+    doc = """Runs BuildX to produce OCI images or local outputs using a Dockerfile.
+
+    The action runs with a fixed `PATH` plus the variables passed with `--action_env`. Use it for
+    what buildx and its credential helpers need from the environment, for example
+    `--action_env=DOCKER_CONFIG=/path/to/dir`, or `--action_env=HOME --action_env=AWS_PROFILE` for
+    `docker-credential-ecr-login`.""",
     toolchains = ["//buildx:toolchain_type"],
 )

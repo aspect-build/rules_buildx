@@ -15,6 +15,11 @@ buildx_build(<a href="#buildx_build-name">name</a>, <a href="#buildx_build-srcs"
 
 Runs BuildX to produce OCI images or local outputs using a Dockerfile.
 
+The action runs with a fixed `PATH` plus the variables passed with `--action_env`. Use it for
+what buildx and its credential helpers need from the environment, for example
+`--action_env=DOCKER_CONFIG=/path/to/dir`, or `--action_env=HOME --action_env=AWS_PROFILE` for
+`docker-credential-ecr-login`.
+
 **ATTRIBUTES**
 
 
