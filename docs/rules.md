@@ -21,7 +21,7 @@ Runs BuildX to produce OCI images or local outputs using a Dockerfile.
 | Name  | Description | Type | Mandatory | Default |
 | :------------- | :------------- | :------------- | :------------- | :------------- |
 | <a id="buildx_build-name"></a>name |  A unique name for this target.   | <a href="https://bazel.build/concepts/labels#target-names">Name</a> | required |  |
-| <a id="buildx_build-srcs"></a>srcs |  Additional sources read during the build.   | <a href="https://bazel.build/concepts/labels">List of labels</a> | optional |  `[]`  |
+| <a id="buildx_build-srcs"></a>srcs |  Sources that make up the main build context.<br><br>Files are staged at the root of the context by basename. Directories (such as the output of `copy_to_directory`) are staged with their layout, which is the way to provide a context with subdirectories.   | <a href="https://bazel.build/concepts/labels">List of labels</a> | optional |  `[]`  |
 | <a id="buildx_build-outs"></a>outs |  List of output files.   | List of strings | optional |  `[]`  |
 | <a id="buildx_build-build_context"></a>build_context |  Dictionary mapping BuildX context names to buildx_context targets.   | Dictionary: String -> Label | optional |  `{}`  |
 | <a id="buildx_build-builder_name"></a>builder_name |  Existing builder name to use. When set, this rule does not create or remove the builder.<br><br>The builder is looked up in the user's `~/.docker/buildx`, so it must have been created with `docker buildx create` by the user running Bazel, and is only usable with local or sandboxed execution.   | String | optional |  `""`  |
