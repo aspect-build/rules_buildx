@@ -1,0 +1,3 @@
+# buildx_build must honor --action_env: buildx reads proxies from this config and passes them as build args
+# (//:action_env_test). Relative to the execroot, where the action runs; //:action_env has the file in srcs.
+common --action_env=DOCKER_CONFIG=docker_config

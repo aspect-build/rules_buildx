@@ -1,0 +1,7 @@
+{
+  "proxies": {
+    "default": {
+      "noProxy": "rules_buildx.test"
+    }
+  }
+}
