@@ -8,6 +8,7 @@ local_path_override(
     path = "../..",
 )
 
+bazel_dep(name = "bazel_lib", version = "3.8.0")
 bazel_dep(name = "bazel_skylib", version = "1.8.2")
 
 # Not used directly: raises the version rules_oci pulls in to one that works with Bazel 9.

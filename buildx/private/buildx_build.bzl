@@ -94,7 +94,7 @@ def _buildx_build_impl(ctx):
     args.add(ctx.attr.builder_name_prefix)
     args.add(ctx.file.dockerfile.path)
     args.add(len(ctx.files.srcs))
-    args.add_all(ctx.files.srcs)
+    args.add_all(ctx.files.srcs, expand_directories = False)
     args.add(_output_arg(ctx, outputs))
     args.add("--platform")
     args.add(",".join(_platforms(ctx)))
@@ -242,7 +242,11 @@ buildx_build = rule(
         ),
         "srcs": attr.label_list(
             allow_files = True,
-            doc = "Additional sources read during the build.",
+            doc = """Sources that make up the main build context.
+
+            Files are staged at the root of the context by basename. Directories (such as the
+            output of `copy_to_directory`) are staged with their layout, which is the way to
+            provide a context with subdirectories.""",
         ),
         "build_context": attr.string_keyed_label_dict(
             providers = [BuildXContextInfo],

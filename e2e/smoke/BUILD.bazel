@@ -1,3 +1,4 @@
+load("@bazel_lib//lib:copy_to_directory.bzl", "copy_to_directory")
 load("@bazel_skylib//rules:build_test.bzl", "build_test")
 load("@rules_buildx//buildx:defs.bzl", "buildx_build", "buildx_context_local", "buildx_context_oci_layout")
 load("@rules_oci//oci:defs.bzl", "oci_image", "oci_load")
@@ -138,6 +139,32 @@ buildx_build(
     tags = ["manual"],
 )
 
+# A directory in srcs keeps its layout in the build context.
+copy_to_directory(
+    name = "nested_context",
+    srcs = [
+        "nested/sub/nested.txt",
+        "nested/top.txt",
+    ],
+    root_paths = ["nested"],
+)
+
+buildx_build(
+    name = "nested_srcs",
+    srcs = [":nested_context"],
+    outs = [
+        "nested.txt",
+        "top.txt",
+    ],
+    dockerfile = ":nested.Dockerfile",
+    output_type = "local",
+    platforms = ["linux/amd64"],
+    target_compatible_with = select({
+        "@platforms//os:windows": ["@platforms//:incompatible"],
+        "//conditions:default": [],
+    }),
+)
+
 # Using the toolchain in a genrule
 genrule(
     name = "version",
@@ -156,5 +183,6 @@ build_test(
         ":motd",
         ":version",
         ":external_context_test",
+        ":nested_srcs",
     ],
 )
