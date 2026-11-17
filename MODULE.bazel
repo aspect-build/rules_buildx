@@ -11,7 +11,7 @@ bazel_dep(name = "platforms", version = "1.0.0")
 
 bazel_dep(name = "gazelle", version = "0.51.1", dev_dependency = True, repo_name = "bazel_gazelle")
 bazel_dep(name = "bazel_skylib_gazelle_plugin", version = "1.4.1", dev_dependency = True)
-bazel_dep(name = "buildifier_prebuilt", version = "6.1.2", dev_dependency = True)
+bazel_dep(name = "buildifier_prebuilt", version = "10.2.0", dev_dependency = True)
 bazel_dep(name = "stardoc", version = "0.7.1", dev_dependency = True)
 
 buildx = use_extension("//buildx:extensions.bzl", "buildx")

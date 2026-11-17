@@ -30,7 +30,7 @@ fi
   --no-cache \
   --progress=plain \
   --output=type=local,dest=$(RULEDIR) \
-  - < "$(location :context)"
+  - < "$(execpath :context)"
 """,
     local = True,
     toolchains = ["@rules_buildx//buildx:resolved_toolchain"],
