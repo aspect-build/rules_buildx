@@ -119,7 +119,9 @@ $COREUTILS touch "$OUTPUT/ingest/.keep"
         },
         mnemonic = "WorkaroundBuildX",
     )
-    files = depset([output])
+
+    # The context holds relative symlinks into the layout, so the layout must travel with it as an input.
+    files = depset([output], transitive = [ctx.attr.layout[DefaultInfo].files])
     return [
         DefaultInfo(
             files = files,
