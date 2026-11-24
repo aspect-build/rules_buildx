@@ -1,3 +1,6 @@
+load(":context_test.bzl", "context_test_suite")
 load(":versions_test.bzl", "versions_test_suite")
 
 versions_test_suite(name = "versions_test")
+
+context_test_suite(name = "context_test")
