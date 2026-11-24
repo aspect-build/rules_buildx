@@ -158,6 +158,7 @@ export BUILDX_CONFIG="$tmpdir/buildx"
 mkdir -p "$BUILDX_CONFIG"
 
 cleanup_tmpdir() {
+    chmod -R u+w "$tmpdir"
     rm -rf "$tmpdir"
 }
 trap cleanup_tmpdir EXIT
